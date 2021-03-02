@@ -2,13 +2,11 @@ import 'package:dio/dio.dart';
 import '../model/single_user_response.dart';
 import '../model/user_model.dart';
 import '.././http_calls/http_service.dart';
-import '.././http_calls/network_exceptions.dart';
-import '.././http_calls/api_result.dart';
+import '../http_calls/NETWORK_EXCEPTIONS/network_exceptions.dart';
+import '../http_calls/API_RESULTS/api_result.dart';
 
 class APIRepository {
   DioClient dioClient;
-
-  // final String _apiKey = <apikey>;
   String _baseUrl = "https://reqres.in/";
 
   APIRepository() {
@@ -21,8 +19,7 @@ class APIRepository {
     try {
       final response = await dioClient.get('api/users/2');
       print(response);
-      SingleUserResponse _singleUser =
-          SingleUserResponse.fromJson(response);
+      SingleUserResponse _singleUser = SingleUserResponse.fromJson(response);
       User user = _singleUser.user;
       return ApiResult.success(data: user);
     } catch (e) {

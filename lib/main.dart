@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dio_pacakge/http_calls/network_exceptions.dart';
 import 'package:flutter_dio_pacakge/repos/api_repo.dart';
-import 'http_calls/api_result.dart';
-import 'http_calls/result_state.dart';
+import 'http_calls/API_RESULTS/api_result.dart';
+import 'http_calls/NETWORK_EXCEPTIONS/network_exceptions.dart';
+import 'http_calls/RESULT_STATE/result_state.dart';
 import 'model/user_model.dart';
 
 void main() {

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'network_exceptions.dart';
+import '../NETWORK_EXCEPTIONS/network_exceptions.dart';
 
 part 'result_state.freezed.dart';
 
