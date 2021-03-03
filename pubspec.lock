@@ -285,12 +285,19 @@ packages:
     source: hosted
     version: "0.6.2"
   json_annotation:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  json_serializable:
+    dependency: "direct main"
+    description:
+      name: json_serializable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.5.1"
   logging:
     dependency: transitive
     description:

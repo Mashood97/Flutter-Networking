@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   dio: ^3.0.10
   freezed:
-  json_annotation: ^3.1.1
+  json_serializable: ^3.5.1
 
 
 dev_dependencies:

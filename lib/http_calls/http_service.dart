@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -15,17 +14,17 @@ class DioClient {
   final List<Interceptor> interceptors;
 
   DioClient(
-      this.baseUrl,
-      Dio dio, {
-        this.interceptors,
-      }) {
+    this.baseUrl,
+    Dio dio, {
+    this.interceptors,
+  }) {
     _dio = dio ?? Dio();
     _dio
       ..options.baseUrl = baseUrl
       ..options.connectTimeout = _defaultConnectTimeout
       ..options.receiveTimeout = _defaultReceiveTimeout
       ..httpClientAdapter;
-      // ..options.headers = {'Content-Type': 'application/json; charset=UTF-8'};
+    // ..options.headers = {'Content-Type': 'application/json; charset=UTF-8'};
     if (interceptors?.isNotEmpty ?? false) {
       _dio.interceptors.addAll(interceptors);
     }
@@ -41,12 +40,12 @@ class DioClient {
   }
 
   Future<dynamic> get(
-      String uri, {
-        Map<String, dynamic> queryParameters,
-        Options options,
-        CancelToken cancelToken,
-        ProgressCallback onReceiveProgress,
-      }) async {
+    String uri, {
+    Map<String, dynamic> queryParameters,
+    Options options,
+    CancelToken cancelToken,
+    ProgressCallback onReceiveProgress,
+  }) async {
     try {
       var response = await _dio.get(
         uri,
@@ -65,15 +64,38 @@ class DioClient {
     }
   }
 
+  Future<dynamic> delete(
+    String uri, {
+    Map<String, dynamic> queryParameters,
+    Options options,
+    CancelToken cancelToken,
+  }) async {
+    try {
+      var response = await _dio.delete(
+        uri,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+      return response.data;
+    } on SocketException catch (e) {
+      throw SocketException(e.toString());
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
+    }
+  }
+
   Future<dynamic> post(
-      String uri, {
-        data,
-        Map<String, dynamic> queryParameters,
-        Options options,
-        CancelToken cancelToken,
-        ProgressCallback onSendProgress,
-        ProgressCallback onReceiveProgress,
-      }) async {
+    String uri, {
+    data,
+    Map<String, dynamic> queryParameters,
+    Options options,
+    CancelToken cancelToken,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
     try {
       var response = await _dio.post(
         uri,
